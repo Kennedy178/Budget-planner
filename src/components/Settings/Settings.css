@@ -64,6 +64,12 @@
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-4);
+  font-weight: var(--font-medium);
+}
+
+[data-theme="light"] .section-description {
+  color: #1e293b;
+  font-weight: var(--font-semibold);
 }
 
 /* Currency Grid */

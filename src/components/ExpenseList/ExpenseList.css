@@ -182,3 +182,16 @@
     font-size: var(--text-xs);
   }
 }
+
+
+.expense-list-actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  margin-top: var(--space-6);
+}
+
+.expense-list-actions .btn {
+  flex: 1;
+  max-width: 300px;
+}

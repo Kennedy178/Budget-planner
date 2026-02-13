@@ -1,16 +1,31 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Pencil, Trash2 } from 'lucide-react';
+import { Pencil, Trash2, ChevronDown, ChevronUp } from 'lucide-react';
 import { format } from 'date-fns';
 import { CATEGORIES, ANIMATION_VARIANTS, EMPTY_STATES } from '../../utils/constants';
 import { formatCurrency, sortExpensesByDate } from '../../utils/calculations';
 import './ExpenseList.css';
 
 function ExpenseList({ expenses, onEdit, onDelete, currency }) {
+  const [showCount, setShowCount] = useState(7);
+
   const getCategoryInfo = (categoryId) => {
     return CATEGORIES.find(cat => cat.id === categoryId) || CATEGORIES[0];
   };
 
   const sortedExpenses = sortExpensesByDate(expenses);
+  const displayedExpenses = sortedExpenses.slice(0, showCount);
+  const remaining = sortedExpenses.length - showCount;
+  const canShowMore = remaining > 0;
+  const canShowLess = showCount > 7;
+
+  const handleShowMore = () => {
+    setShowCount(prev => Math.min(prev + 10, sortedExpenses.length));
+  };
+
+  const handleShowLess = () => {
+    setShowCount(7);
+  };
 
   if (expenses.length === 0) {
     return (
@@ -34,11 +49,13 @@ function ExpenseList({ expenses, onEdit, onDelete, currency }) {
     >
       <div className="expense-list-header">
         <h3>📝 Recent Expenses</h3>
-        <span className="expense-count">{expenses.length} expense{expenses.length !== 1 ? 's' : ''}</span>
+        <span className="expense-count">
+          Showing {displayedExpenses.length} of {expenses.length}
+        </span>
       </div>
 
       <div className="expense-list">
-        {sortedExpenses.map((expense, index) => {
+        {displayedExpenses.map((expense, index) => {
           const category = getCategoryInfo(expense.category);
           const formattedDate = format(new Date(expense.date), 'MMM dd, yyyy');
 
@@ -51,7 +68,6 @@ function ExpenseList({ expenses, onEdit, onDelete, currency }) {
               transition={{ delay: index * 0.05 }}
               whileHover={{ scale: 1.02 }}
             >
-              {/* Category Icon */}
               <div
                 className="expense-icon"
                 style={{
@@ -61,7 +77,6 @@ function ExpenseList({ expenses, onEdit, onDelete, currency }) {
                 <span>{category.emoji}</span>
               </div>
 
-              {/* Details */}
               <div className="expense-details">
                 <h4 className="expense-description">{expense.description}</h4>
                 <div className="expense-meta">
@@ -71,14 +86,12 @@ function ExpenseList({ expenses, onEdit, onDelete, currency }) {
                 </div>
               </div>
 
-              {/* Amount */}
               <div className="expense-amount-section">
                 <div className="expense-amount">
                   {formatCurrency(expense.amount, currency.symbol)}
                 </div>
               </div>
 
-              {/* Actions */}
               <div className="expense-actions">
                 <button
                   onClick={() => onEdit(expense)}
@@ -101,6 +114,24 @@ function ExpenseList({ expenses, onEdit, onDelete, currency }) {
           );
         })}
       </div>
+
+      {/* Show More/Less Buttons */}
+      {(canShowMore || canShowLess) && (
+        <div className="expense-list-actions">
+          {canShowMore && (
+            <button onClick={handleShowMore} className="btn btn-secondary">
+              <ChevronDown size={18} />
+              Show {Math.min(10, remaining)} More ({remaining} remaining)
+            </button>
+          )}
+          {canShowLess && (
+            <button onClick={handleShowLess} className="btn btn-ghost">
+              <ChevronUp size={18} />
+              Show Less
+            </button>
+          )}
+        </div>
+      )}
     </motion.div>
   );
 }

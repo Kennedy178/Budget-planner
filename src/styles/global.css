@@ -8,7 +8,7 @@
 /* ========================================
    RESET & BASE STYLES
    ======================================== */
-
+   
 * {
   margin: 0;
   padding: 0;
@@ -340,7 +340,21 @@ select:focus {
 
 input::placeholder,
 textarea::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.8;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #334155;
+  font-weight: var(--font-medium);
+  opacity: 1;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
   color: var(--color-text-tertiary);
+  opacity: 0.7;
 }
 
 

@@ -8,7 +8,7 @@ export const CATEGORIES = [
     id: 'food',
     name: 'Food & Groceries',
     emoji: '🍔',
-    color: '#FF6B6B', // Warm red
+    color: '#FF6B6B', // Coral Red
     lightColor: '#FFE5E5',
     darkColor: '#CC5555'
   },
@@ -16,57 +16,57 @@ export const CATEGORIES = [
     id: 'transport',
     name: 'Transport',
     emoji: '🚌',
-    color: '#4ECDC4', // Teal
-    lightColor: '#E0F7F5',
-    darkColor: '#3DA39C'
+    color: '#9B59B6', // Purple
+    lightColor: '#F4ECF7',
+    darkColor: '#7C4792'
   },
   {
     id: 'study',
     name: 'Study Materials',
     emoji: '📚',
-    color: '#45B7D1', // Sky blue
-    lightColor: '#E1F4F9',
-    darkColor: '#3792A7'
+    color: '#3498DB', // Bright Blue
+    lightColor: '#EBF5FB',
+    darkColor: '#2A7AAF'
   },
   {
     id: 'accommodation',
     name: 'Accommodation',
     emoji: '🏠',
-    color: '#FFA07A', // Light salmon
-    lightColor: '#FFEDE5',
-    darkColor: '#CC8062'
+    color: '#E67E22', // Orange
+    lightColor: '#FDF2E9',
+    darkColor: '#B8651B'
   },
   {
     id: 'entertainment',
     name: 'Entertainment',
     emoji: '🎉',
-    color: '#98D8C8', // Mint
-    lightColor: '#E8F5F1',
-    darkColor: '#7AADA0'
+    color: '#E91E63', // Pink/Magenta
+    lightColor: '#FCE4EC',
+    darkColor: '#BA184F'
   },
   {
     id: 'health',
     name: 'Health & Fitness',
     emoji: '💪',
-    color: '#95E1D3', // Light turquoise
-    lightColor: '#E7F8F5',
-    darkColor: '#77B4A9'
+    color: '#27AE60', // Green
+    lightColor: '#E8F8F5',
+    darkColor: '#1F8B4D'
   },
   {
     id: 'shopping',
     name: 'Shopping',
     emoji: '🛍️',
-    color: '#F38BA0', // Pink
-    lightColor: '#FDEEF1',
-    darkColor: '#C26F80'
+    color: '#F39C12', // Golden Yellow
+    lightColor: '#FEF5E7',
+    darkColor: '#C27D0E'
   },
   {
     id: 'other',
     name: 'Other',
     emoji: '💰',
-    color: '#A8A8FF', // Lavender
-    lightColor: '#EBEBFF',
-    darkColor: '#8686CC'
+    color: '#16A085', // Teal
+    lightColor: '#E8F6F3',
+    darkColor: '#11806A'
   }
 ];
 
