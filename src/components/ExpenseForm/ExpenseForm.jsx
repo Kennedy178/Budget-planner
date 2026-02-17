@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { CATEGORIES, ERROR_MESSAGES, SUCCESS_MESSAGES } from '../../utils/constants';
 import { addExpense, updateExpense } from '../../utils/localStorage';
+import { loadCurrency } from '../../utils/localStorage';
 import './ExpenseForm.css';
 
 function ExpenseForm({ isOpen, onClose, onSuccess, editingExpense = null }) {
@@ -12,6 +13,7 @@ function ExpenseForm({ isOpen, onClose, onSuccess, editingExpense = null }) {
     description: '',
     date: new Date().toISOString().split('T')[0]
   });
+  const currency = loadCurrency();
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -150,7 +152,7 @@ function ExpenseForm({ isOpen, onClose, onSuccess, editingExpense = null }) {
                 {/* Amount */}
                 <div className="form-group">
                   <label htmlFor="amount">
-                    Amount (£) <span className="required">*</span>
+                    Amount ({currency.symbol}) <span className="required">*</span>
                   </label>
                   <input
                     type="number"
