@@ -1,7 +1,17 @@
 import { motion } from 'framer-motion';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { 
+  ComposedChart, 
+  Bar, 
+  Line,
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  Legend,
+  ResponsiveContainer 
+} from 'recharts';
 import { format } from 'date-fns';
-import { sortExpensesByDate, formatCurrency } from '../../utils/calculations';
+import { formatCurrency } from '../../utils/calculations';
 import { ANIMATION_VARIANTS } from '../../utils/constants';
 import './Charts.css';
 
@@ -32,22 +42,46 @@ function SpendingTrend({ expenses, currency }) {
   // Take last 14 days
   const recentData = dailyData.slice(-14);
 
+  // Calculate 3-day moving average for trend line
+  const dataWithTrend = recentData.map((item, index) => {
+    if (index < 2) {
+      return { ...item, trend: item.amount };
+    }
+    
+    const avg = (
+      recentData[index].amount + 
+      recentData[index - 1].amount + 
+      recentData[index - 2].amount
+    ) / 3;
+    
+    return { ...item, trend: avg };
+  });
+
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
         <div className="chart-tooltip glass">
           <p className="tooltip-title">{payload[0].payload.date}</p>
-          <p className="tooltip-amount">{formatCurrency(payload[0].value, currency.symbol)}</p>
-          <p className="tooltip-count">
-            {payload[0].payload.count} expense{payload[0].payload.count !== 1 ? 's' : ''}
-          </p>
+          <div style={{ marginTop: '8px' }}>
+            <p className="tooltip-amount" style={{ color: 'var(--color-primary)', marginBottom: '4px' }}>
+              Daily: {formatCurrency(payload[0].value, currency.symbol)}
+            </p>
+            <p className="tooltip-count" style={{ marginBottom: '4px' }}>
+              {payload[0].payload.count} expense{payload[0].payload.count !== 1 ? 's' : ''}
+            </p>
+            {payload[1] && (
+              <p className="tooltip-count" style={{ color: '#f97316', fontWeight: 'var(--font-semibold)' }}>
+                3-Day Avg: {formatCurrency(payload[1].value, currency.symbol)}
+              </p>
+            )}
+          </div>
         </div>
       );
     }
     return null;
   };
 
-  if (recentData.length === 0) {
+  if (dataWithTrend.length === 0) {
     return (
       <motion.div
         className="card chart-empty"
@@ -71,7 +105,7 @@ function SpendingTrend({ expenses, currency }) {
 
       <div className="chart-wrapper">
         <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={recentData}>
+          <ComposedChart data={dataWithTrend}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" opacity={0.3} />
             <XAxis
               dataKey="date"
@@ -84,34 +118,70 @@ function SpendingTrend({ expenses, currency }) {
               tickFormatter={(value) => `${currency.symbol}${value}`}
             />
             <Tooltip content={<CustomTooltip />} cursor={{ fill: 'var(--glass-bg)' }} />
+            <Legend 
+              wrapperStyle={{ paddingTop: '20px' }}
+              iconType="circle"
+            />
+            
+            {/* Bar Chart */}
             <Bar
               dataKey="amount"
               fill="var(--color-primary)"
               radius={[8, 8, 0, 0]}
               animationBegin={0}
               animationDuration={800}
+              name="Daily Spending"
             />
-          </BarChart>
+            
+            {/* Trend Line */}
+            <Line
+              type="monotone"
+              dataKey="trend"
+              stroke="#f97316"
+              strokeWidth={3}
+              dot={{ fill: '#f97316', r: 4 }}
+              activeDot={{ r: 6 }}
+              animationBegin={400}
+              animationDuration={1000}
+              name="3-Day Average"
+            />
+          </ComposedChart>
         </ResponsiveContainer>
       </div>
 
       <div className="chart-stats">
         <div className="chart-stat">
           <span className="stat-label">Total Days</span>
-          <span className="stat-value">{recentData.length}</span>
+          <span className="stat-value">{dataWithTrend.length}</span>
         </div>
         <div className="chart-stat">
           <span className="stat-label">Avg/Day</span>
           <span className="stat-value">
-            {formatCurrency(recentData.reduce((sum, d) => sum + d.amount, 0) / recentData.length, currency.symbol)}
+            {formatCurrency(dataWithTrend.reduce((sum, d) => sum + d.amount, 0) / dataWithTrend.length, currency.symbol)}
           </span>
         </div>
         <div className="chart-stat">
           <span className="stat-label">Highest Day</span>
           <span className="stat-value">
-            {formatCurrency(Math.max(...recentData.map(d => d.amount)), currency.symbol)}
+            {formatCurrency(Math.max(...dataWithTrend.map(d => d.amount)), currency.symbol)}
           </span>
         </div>
+        <div className="chart-stat">
+          <span className="stat-label">Trend</span>
+          <span className="stat-value" style={{ color: '#f97316' }}>
+            {dataWithTrend[dataWithTrend.length - 1].trend > dataWithTrend[0].trend ? '📈' : '📉'}
+          </span>
+        </div>
+      </div>
+
+      {/* Explanation Section */}
+      <div className="chart-explanation">
+        <p className="chart-info">
+          <span className="info-icon">💡</span>
+          <span className="info-text">
+            The <strong>orange line</strong> shows a 3-day average, so one expensive day won't throw off your overall trend.
+          </span>
+        </p>
       </div>
     </motion.div>
   );

@@ -8,65 +8,65 @@ export const CATEGORIES = [
     id: 'food',
     name: 'Food & Groceries',
     emoji: '🍔',
-    color: '#FF6B6B', // Coral Red
-    lightColor: '#FFE5E5',
-    darkColor: '#CC5555'
+    color: '#ef4444',        // Bright Red
+    lightColor: '#fee2e2',
+    darkColor: '#dc2626'
   },
   {
     id: 'transport',
     name: 'Transport',
     emoji: '🚌',
-    color: '#9B59B6', // Purple
-    lightColor: '#F4ECF7',
-    darkColor: '#7C4792'
+    color: '#06b6d4',        // Cyan
+    lightColor: '#cffafe',
+    darkColor: '#0891b2'
   },
   {
     id: 'study',
     name: 'Study Materials',
     emoji: '📚',
-    color: '#3498DB', // Bright Blue
-    lightColor: '#EBF5FB',
-    darkColor: '#2A7AAF'
+    color: '#3b82f6',        // Blue
+    lightColor: '#dbeafe',
+    darkColor: '#2563eb'
   },
   {
     id: 'accommodation',
     name: 'Accommodation',
     emoji: '🏠',
-    color: '#E67E22', // Orange
-    lightColor: '#FDF2E9',
-    darkColor: '#B8651B'
+    color: '#f97316',        // Orange
+    lightColor: '#ffedd5',
+    darkColor: '#ea580c'
   },
   {
     id: 'entertainment',
     name: 'Entertainment',
     emoji: '🎉',
-    color: '#E91E63', // Pink/Magenta
-    lightColor: '#FCE4EC',
-    darkColor: '#BA184F'
+    color: '#a855f7',        // Purple
+    lightColor: '#f3e8ff',
+    darkColor: '#9333ea'
   },
   {
     id: 'health',
     name: 'Health & Fitness',
     emoji: '💪',
-    color: '#27AE60', // Green
-    lightColor: '#E8F8F5',
-    darkColor: '#1F8B4D'
+    color: '#22c55e',        // Green
+    lightColor: '#dcfce7',
+    darkColor: '#16a34a'
   },
   {
     id: 'shopping',
     name: 'Shopping',
     emoji: '🛍️',
-    color: '#F39C12', // Golden Yellow
-    lightColor: '#FEF5E7',
-    darkColor: '#C27D0E'
+    color: '#ec4899',        // Pink/Magenta
+    lightColor: '#fce7f3',
+    darkColor: '#db2777'
   },
   {
     id: 'other',
     name: 'Other',
     emoji: '💰',
-    color: '#16A085', // Teal
-    lightColor: '#E8F6F3',
-    darkColor: '#11806A'
+    color: '#eab308',        // Yellow/Gold
+    lightColor: '#fef9c3',
+    darkColor: '#ca8a04'
   }
 ];
 
