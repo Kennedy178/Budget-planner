@@ -3,6 +3,20 @@
 
 A beautiful, intuitive budget tracking application designed specifically for students. Track expenses, visualize spending patterns, and stay on top of your finances with ease.
 
+<p align="center">
+  <a href="https://studentbudgetplana.netlify.app/" target="_blank" rel="noopener noreferrer">
+    <img 
+      src="https://img.shields.io/badge/TRY%20LIVE-NOW-brightgreen?style=for-the-badge&logo=netlify&logoColor=white&labelColor=222&color=00C853" 
+      alt="Try Live" 
+      height="60"
+    >
+  </a>
+</p>
+
+<p align="center" style="margin: -10px 0 30px 0; font-size: 1.1em; font-weight: 500; color: #555;">
+  Experience the Student Budget Planner instantly — no sign-up, no install
+</p>
+
 ![App Banner](./src/assets/banner.png)
 
 ## ✨ Features
