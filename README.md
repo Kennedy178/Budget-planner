@@ -51,28 +51,28 @@ A beautiful, intuitive budget tracking application designed specifically for stu
 ## 🖼️ Screenshots
 
 ### Dashboard Overview
-![Dashboard](./src/assets/dashboard.png)
 *Main dashboard showing budget summary, spending insights, and charts*
+![Dashboard](./src/assets/dashboard.png)
 
 ### Light Theme
-![Light Theme](./src/assets/light-mode.png)
 *Clean, bright interface perfect for daytime use*
+![Light Theme](./src/assets/light-mode.png)
 
 ### Add Expense
-![Add Expense Form](./src/assets/add-expense.png)
 *Quick and intuitive expense entry form*
+![Add Expense Form](./src/assets/add-expense.png)
 
 ### Spending Charts
-![Charts](./src/assets/charts.png)
 *Visual breakdown of spending by category and daily trends*
+![Charts](./src/assets/charts.png)
 
 ### Mobile View
-![Mobile Responsive](./src/assets/mobile-view.png)
 *Fully responsive design that works on any device*
+![Mobile Responsive](./src/assets/mobile-view.png)
 
 ### Settings
-![Settings](./src/assets/settings.png)
 *Currency selection and data backup options*
+![Settings](./src/assets/settings.png)
 
 ---
 
