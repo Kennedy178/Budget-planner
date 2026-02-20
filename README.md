@@ -3,7 +3,7 @@
 
 A beautiful, intuitive budget tracking application designed specifically for students. Track expenses, visualize spending patterns, and stay on top of your finances with ease.
 
-![App Banner](./assets/banner.png)
+![App Banner](./src/assets/banner.png)
 
 ## ✨ Features
 
@@ -51,27 +51,27 @@ A beautiful, intuitive budget tracking application designed specifically for stu
 ## 🖼️ Screenshots
 
 ### Dashboard Overview
-![Dashboard](./assets/dashboard.png)
+![Dashboard](./src/assets/dashboard.png)
 *Main dashboard showing budget summary, spending insights, and charts*
 
 ### Light Theme
-![Light Theme](./assets/light-mode.png)
+![Light Theme](./src/assets/light-mode.png)
 *Clean, bright interface perfect for daytime use*
 
 ### Add Expense
-![Add Expense Form](./assets/add-expense.png)
+![Add Expense Form](./src/assets/add-expense.png)
 *Quick and intuitive expense entry form*
 
 ### Spending Charts
-![Charts](./assets/charts.png)
+![Charts](./src/assets/charts.png)
 *Visual breakdown of spending by category and daily trends*
 
 ### Mobile View
-![Mobile Responsive](./assets/mobile-view.png)
+![Mobile Responsive](./src/assets/mobile-view.png)
 *Fully responsive design that works on any device*
 
 ### Settings
-![Settings](./assets/settings.png)
+![Settings](./src/assets/settings.png)
 *Currency selection and data backup options*
 
 ---
